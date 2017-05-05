@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -194,7 +193,7 @@ public class Main extends Application {
 		game.getChildren().add(points);
 		score = new SimpleStringProperty("Score: 0");
 		points.setTextFill(Color.RED);
-		points.setFont(Font.font ("Verdana", 60));
+		points.setFont(Font.font ("Verdana", 40));
 		points.textProperty().bind(score);
 
 		new AnimationTimer() {
@@ -215,6 +214,12 @@ public class Main extends Application {
 		else if (right)
 			ball.setCenterX(ball.getCenterX() + 5);
 		// When the ball hits the pad
+		
+		if (ball.getCenterY() == pad.getY() + 375){
+			ball.setFill(Color.BLUE);
+		}else{
+			ball.setFill(Color.RED);
+		}
 		if (ball.getBoundsInParent().intersects(pad.getBoundsInParent())) {
 			// boolean y = false;
 			int randomMove = randomNum.nextInt(800);
