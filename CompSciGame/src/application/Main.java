@@ -8,7 +8,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -61,7 +60,6 @@ public class Main extends Application {
 				windowX = 1000;
 				windowY = 850;
 				Main.close();
-
 				gameScreen = new Scene(game, windowX, windowY);
 				gameScreen.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				Main.setScene(gameScreen);
@@ -78,11 +76,9 @@ public class Main extends Application {
 				gameScreen.setOnKeyPressed((key) -> {
 					if (key.getCode() == KeyCode.LEFT) {
 						left = true;
-
 					}
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = true;
-
 					}
 
 				});
@@ -93,9 +89,7 @@ public class Main extends Application {
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = false;
 					}
-
 				});
-
 			}
 		});
 
@@ -127,13 +121,10 @@ public class Main extends Application {
 				gameScreen.setOnKeyPressed((key) -> {
 					if (key.getCode() == KeyCode.LEFT) {
 						left = true;
-
 					}
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = true;
-
 					}
-
 				});
 				gameScreen.setOnKeyReleased((key) -> {
 					if (key.getCode() == KeyCode.LEFT) {
@@ -142,9 +133,7 @@ public class Main extends Application {
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = false;
 					}
-
 				});
-
 			}
 		});
 
@@ -161,7 +150,6 @@ public class Main extends Application {
 				windowX = 1000;
 				windowY = 850;
 				Main.close();
-
 				gameScreen = new Scene(game, windowX, windowY);
 				gameScreen.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				Main.setScene(gameScreen);
@@ -176,11 +164,9 @@ public class Main extends Application {
 				gameScreen.setOnKeyPressed((key) -> {
 					if (key.getCode() == KeyCode.LEFT) {
 						left = true;
-
 					}
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = true;
-
 					}
 
 				});
@@ -191,9 +177,7 @@ public class Main extends Application {
 					if (key.getCode() == KeyCode.RIGHT) {
 						right = false;
 					}
-
 				});
-
 			}
 		});
 
@@ -207,7 +191,6 @@ public class Main extends Application {
 				play();
 			}
 		}.start();
-
 	}
 
 	private static void play() {
@@ -216,7 +199,6 @@ public class Main extends Application {
 			ball.setCenterX(ball.getCenterX() - 5);
 		else if (right)
 			ball.setCenterX(ball.getCenterX() + 5);
-
 		// When the ball hits the pad
 		if (ball.getBoundsInParent().intersects(pad.getBoundsInParent())) {
 			// boolean y = false;
@@ -231,14 +213,12 @@ public class Main extends Application {
 			// }
 			pad.setTranslateX(randomMove);
 			// pad.setTranslateY(randomMoveY);
-
 			Score += 10;
 			score.set("Score: " + Score);
 		} else if (ball.getCenterY() + (200 / 8) == pad.getY()) {
 			Score -= 10;
 			score.set("Score: " + Score);
 		}
-
 		if (up == false) {
 			if (ball.getCenterY() < windowY / 2 - 40) {
 
@@ -278,10 +258,12 @@ public class Main extends Application {
 			} else {
 				up = false;
 			}
-			if (ball.getCenterY()-(200/8) == pad.getY() && intersect == false){
-				up = false;
+			
+			if (ball.getCenterY() - 375 == pad.getY() && !(ball.getBoundsInParent().intersects(pad.getBoundsInParent()))){
+				System.out.println("test");
 			}
 		}
+		
 	}
 
 	public static void main(String[] args) {
