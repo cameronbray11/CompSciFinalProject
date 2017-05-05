@@ -11,11 +11,15 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 public class Main extends Application {
 	public static int windowX = 200;
@@ -33,6 +37,8 @@ public class Main extends Application {
 	public static int Score = 0;
 	static SimpleStringProperty score;
 	public static boolean intersect;
+	public static ImageView  iv = new ImageView();
+	public static Image image;
 
 
 	@Override
@@ -44,6 +50,9 @@ public class Main extends Application {
 		game.getChildren().add(ball);
 		pad = new Rectangle(windowX, 10, Color.GRAY); // Pad
 		game.getChildren().add(pad);
+		game.getChildren().add(iv);
+		image = new Image ("file:Background.jpg");
+		iv.setImage(image);
 		Main.show();
 
 		// Easy Button
@@ -160,7 +169,7 @@ public class Main extends Application {
 				bx = windowX / 2;
 				by = windowY / 2;
 				Main.show();
-
+				
 				gameScreen.setOnKeyPressed((key) -> {
 					if (key.getCode() == KeyCode.LEFT) {
 						left = true;
@@ -184,6 +193,8 @@ public class Main extends Application {
 		Label points = new Label("");
 		game.getChildren().add(points);
 		score = new SimpleStringProperty("Score: 0");
+		points.setTextFill(Color.RED);
+		points.setFont(Font.font ("Verdana", 60));
 		points.textProperty().bind(score);
 
 		new AnimationTimer() {
@@ -194,6 +205,10 @@ public class Main extends Application {
 	}
 
 	private static void play() {
+		iv.setFitHeight(850);
+		iv.setFitWidth(1000);
+		iv.toBack();
+		
 		// Ball movement
 		if (left)
 			ball.setCenterX(ball.getCenterX() - 5);
