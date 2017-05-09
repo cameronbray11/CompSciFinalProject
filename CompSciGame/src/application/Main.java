@@ -210,44 +210,30 @@ public class Main extends Application {
 		
 		// Ball movement
 		if (left)
-			ball.setCenterX(ball.getCenterX() - 5);
+			ball.setCenterX(ball.getCenterX() - 10);
 		else if (right)
-			ball.setCenterX(ball.getCenterX() + 5);
+			ball.setCenterX(ball.getCenterX() + 10);
 		// When the ball hits the pad
-		
-		if (ball.getCenterY() == pad.getY() + 375){
-			ball.setFill(Color.BLUE);
-		}else{
-			ball.setFill(Color.RED);
-		}
+
 		if (ball.getBoundsInParent().intersects(pad.getBoundsInParent())) {
-			// boolean y = false;
 			int randomMove = randomNum.nextInt(800);
-			// int randomMoveY = randomNum.nextInt(800);
-			// while (y == false){
-			// if (randomMoveY < 400){
-			// randomMoveY = randomNum.nextInt(800);
-			// }else{
-			// y = true;
-			// }
-			// }
 			pad.setTranslateX(randomMove);
-			// pad.setTranslateY(randomMoveY);
 			Score += 10;
-			score.set("Score: " + Score);
-		} else if (ball.getCenterY() + (200 / 8) == pad.getY()) {
-			Score -= 10;
 			score.set("Score: " + Score);
 		}
 		if (up == false) {
-			if (ball.getCenterY() < windowY / 2 - 40) {
+			if (ball.getCenterY() - 200/8 < 350.000000000001) {
 
 				if (level == 1) {
-					ball.setCenterY(ball.getCenterY() + 8);
+					ball.setCenterY(ball.getCenterY() + 10);
 				} else if (level == 2) {
 					ball.setCenterY(ball.getCenterY() + 12);
 				} else if (level == 3) {
-					ball.setCenterY(ball.getCenterY() + 15);
+					ball.setCenterY(ball.getCenterY() + 25);
+					if (left)
+						ball.setCenterX(ball.getCenterX() - 5);
+					else if (right)
+						ball.setCenterX(ball.getCenterX() + 5);
 				}
 			} else {
 				up = true;
@@ -264,23 +250,19 @@ public class Main extends Application {
 			} else if (level == 3) {
 				y = -250;
 			}
+			
 			if (ball.getBoundsInParent().intersects(pad.getBoundsInParent())) {
-
 			} else if (ball.getCenterY() > y) {
 				if (level == 1) {
-					ball.setCenterY(ball.getCenterY() - 5);
+					ball.setCenterY(ball.getCenterY() - 10);
 				} else if (level == 2) {
 					ball.setCenterY(ball.getCenterY() - 12);
 				} else if (level == 3) {
-					ball.setCenterY(ball.getCenterY() - 15);
+					ball.setCenterY(ball.getCenterY() - 25);
 				}
 
 			} else {
 				up = false;
-			}
-			
-			if (ball.getCenterY() - 375 == pad.getY() && !(ball.getBoundsInParent().intersects(pad.getBoundsInParent()))){
-				System.out.println("test");
 			}
 		}
 		
