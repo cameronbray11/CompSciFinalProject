@@ -39,6 +39,7 @@ public class Main extends Application {
 	public static ImageView  iv = new ImageView();
 	public static Image image;
 
+	
 
 	@Override
 	public void start(Stage Main) {
