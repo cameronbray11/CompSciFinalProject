@@ -38,8 +38,19 @@ public class Main extends Application {
 	public static boolean intersect;
 	public static ImageView  iv = new ImageView();
 	public static Image image;
+	public static ImageView  blood1 = new ImageView();
+	public static ImageView  blood2 = new ImageView();
+	public static ImageView  blood3 = new ImageView();
+	public static ImageView  blood4 = new ImageView();
+	public static ImageView  blood5 = new ImageView();
+	public static ImageView  blood6 = new ImageView();
+	public static ImageView  blood7 = new ImageView();
+	public static ImageView  blood8 = new ImageView();
+	public static ImageView  blood9 = new ImageView();
+	public static ImageView  blood10 = new ImageView();
+	public static Image spike;
+	public static Image blood;
 
-	
 
 	@Override
 	public void start(Stage Main) {
@@ -49,10 +60,12 @@ public class Main extends Application {
 		ball = new Circle(windowX / 8, Color.RED); // Ball
 		game.getChildren().add(ball);
 		pad = new Rectangle(windowX, 10, Color.GRAY); // Pad
-		game.getChildren().add(pad);
-		game.getChildren().add(iv);
+		game.getChildren().add(pad);game.getChildren().add(iv);game.getChildren().add(blood1);game.getChildren().add(blood2);game.getChildren().add(blood3);game.getChildren().add(blood4);game.getChildren().add(blood5);game.getChildren().add(blood6);game.getChildren().add(blood7);game.getChildren().add(blood8);game.getChildren().add(blood9);game.getChildren().add(blood10);
 		image = new Image ("file:Background.jpg");
 		iv.setImage(image);
+		image = new Image ("file:spikes-hi.png");
+		blood = new Image ("file:blood_PNG6119.png");
+		blood1.setImage(image);blood2.setImage(image);blood3.setImage(image);
 		Main.show();
 
 		// Easy Button
@@ -75,7 +88,7 @@ public class Main extends Application {
 				ball.setTranslateX(windowX / 2);
 				ball.setTranslateY(windowY / 2);
 				pad.setTranslateX(windowX / 2);
-				pad.setTranslateY(windowY - 20);
+				pad.setTranslateY(windowY - 50);
 				bx = windowX / 2;
 				by = windowY / 2;
 				Main.show();
@@ -122,7 +135,7 @@ public class Main extends Application {
 				ball.setTranslateX(windowX / 2);
 				ball.setTranslateY(windowY / 2);
 				pad.setTranslateX(windowX / 2);
-				pad.setTranslateY(windowY - 20);
+				pad.setTranslateY(windowY - 50);
 				bx = windowX / 2;
 				by = windowY / 2;
 				Main.show();
@@ -165,7 +178,7 @@ public class Main extends Application {
 				ball.setTranslateX(windowX / 2);
 				ball.setTranslateY(windowY / 2);
 				pad.setTranslateX(windowX / 2);
-				pad.setTranslateY(windowY - 20);
+				pad.setTranslateY(windowY - 50);
 				bx = windowX / 2;
 				by = windowY / 2;
 				Main.show();
@@ -205,10 +218,25 @@ public class Main extends Application {
 	}
 
 	private static void play() {
-		iv.setFitHeight(850);
-		iv.setFitWidth(1000);
-		iv.toBack();
+		if(ball.getCenterX() >= 475){
+			right = false;
+		}else if (ball.getCenterX() <= -475){
+			left = false;
+		}
 		
+		iv.setFitHeight(850);iv.setFitWidth(1000);
+		blood1.toBack();blood2.toBack();blood3.toBack();blood4.toBack();blood5.toBack();blood6.toBack();blood7.toBack();blood8.toBack();blood9.toBack();blood10.toBack();
+		iv.toBack();
+		blood1.setX(0);blood1.setY(800);blood1.setFitHeight(100);blood1.setFitWidth(100);
+		blood2.setX(100);blood2.setY(800);blood2.setFitHeight(100);blood2.setFitWidth(100);
+		blood3.setX(200);blood3.setY(800);blood3.setFitHeight(100);blood3.setFitWidth(100);
+		blood4.setX(300);blood4.setY(800);blood4.setFitHeight(100);blood4.setFitWidth(100);
+		blood5.setX(400);blood5.setY(800);blood5.setFitHeight(100);blood5.setFitWidth(100);
+		blood6.setX(500);blood6.setY(800);blood6.setFitHeight(100);blood6.setFitWidth(100);
+		blood7.setX(600);blood7.setY(800);blood7.setFitHeight(100);blood7.setFitWidth(100);
+		blood8.setX(700);blood8.setY(800);blood8.setFitHeight(100);blood8.setFitWidth(100);
+		blood9.setX(800);blood9.setY(800);blood9.setFitHeight(100);blood9.setFitWidth(100);
+		blood10.setX(-900);blood10.setY(800);blood10.setFitHeight(100);blood10.setFitWidth(100);
 		// Ball movement
 		if (left)
 			ball.setCenterX(ball.getCenterX() - 10);
@@ -222,8 +250,9 @@ public class Main extends Application {
 			Score += 10;
 			score.set("Score: " + Score);
 		}
+		
 		if (up == false) {
-			if (ball.getCenterY() - 200/8 < 350.000000000001) {
+			if (ball.getCenterY() - 200/8 < 319) {
 
 				if (level == 1) {
 					ball.setCenterY(ball.getCenterY() + 10);
