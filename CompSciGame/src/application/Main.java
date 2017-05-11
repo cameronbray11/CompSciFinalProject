@@ -203,7 +203,7 @@ public class Main extends Application {
 	}
 
 	private static void play() {
-		if(ball.getCenterX() >= 475){
+		if(ball.getCenterX() >= 468){
 			right = false;
 		}else if (ball.getCenterX() <= -475){
 			left = false;
@@ -230,15 +230,11 @@ public class Main extends Application {
 			if (ball.getCenterY() - 200/8 < 319) {
 
 				if (level == 1) {
-					ball.setCenterY(ball.getCenterY() + 10);
+					ball.setCenterY(ball.getCenterY() );
 				} else if (level == 2) {
 					ball.setCenterY(ball.getCenterY() + 12);
 				} else if (level == 3) {
 					ball.setCenterY(ball.getCenterY() + 25);
-					if (left)
-						ball.setCenterX(ball.getCenterX() - 5);
-					else if (right)
-						ball.setCenterX(ball.getCenterX() + 5);
 				}
 			} else {
 				up = true;
@@ -259,7 +255,7 @@ public class Main extends Application {
 			if (ball.getBoundsInParent().intersects(pad.getBoundsInParent())) {
 			} else if (ball.getCenterY() > y) {
 				if (level == 1) {
-					ball.setCenterY(ball.getCenterY() - 10);
+					ball.setCenterY(ball.getCenterY() - 5);
 				} else if (level == 2) {
 					ball.setCenterY(ball.getCenterY() - 12);
 				} else if (level == 3) {
